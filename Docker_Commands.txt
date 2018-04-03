@@ -1,0 +1,23 @@
+Reference Link: https://www.tutorialspoint.com/docker/index.htm
+
+docker version
+docker info
+docker images
+docker pull <imageName>
+docker run <imageName>
+docker run -it <imageName>    --> running image on interactive terminal Mode
+docker run -d <imageName>     --> detached mode of running container
+docker ps                     --> containers which are running
+docker ps -a                  --> all containers started and exited
+docker ps -aq                 --> all container IDs
+docker rm <containerID> (or)  --> removing one container by ID 
+docker rm $(docker ps -aq)    --> deleting all container by IDs
+docker rmi -f <imageID >      --> forced removal of image
+docker stop <containerID>
+docker start <containerID>
+docker run -d -p 15672:15672 --hostname my-rabbitmq --name messageQ rabbitmq:3-management
+
+Starting and stoping docker engine service from OS:
+service docker stop  (To check whether the service is running fire a cmd: docker info)
+service docker start (To check whether the service is running fire a cmd: docker info)
+
