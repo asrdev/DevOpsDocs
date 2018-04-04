@@ -23,5 +23,15 @@ service docker start (To check whether the service is running fire a cmd: docker
 
 DockerFile:  --> Set of instruction to build a Image
 
-docker build -t <imgName:TagName> .      ---> It will build a image based on Dockerfile instruction in current directory.
+docker build -t <imgName:TagName> dir   (.) ---> It will build a image based on Dockerfile instruction in current directory.
+
+Tag the image to align to Docker Hub repository:
+docker tag <currentRepoName> <expectedRepoName>    --> eg: docker tag nginx:1.0 manee2k6/nginx:1.0
+
+docker login    --> Provider username and Password
+docker push <repoNameWithTag>   --> eg: docker push manee2k6/nginx:1.0
+
+
+
+
 
