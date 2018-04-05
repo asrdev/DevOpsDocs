@@ -34,7 +34,8 @@ docker push <repoNameWithTag>                       --> eg: docker push manee2k6
 docker inspect <imageID>                            --> To inspect the configuration of Images created..
 docker inspect <repoName:tagName>                   --> To inspect the configuration of Repository.
 
-
+Volume mounting uisng -v:
+ docker run -p 8081:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --name         jenkins -d jenkins-docker
 
 
 
