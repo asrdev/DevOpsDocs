@@ -22,6 +22,7 @@ service docker stop  (To check whether the service is running fire a cmd: docker
 service docker start (To check whether the service is running fire a cmd: docker info)
 
 DockerFile:  --> Set of instruction to build a Image
+FROM, MAINTAINER, RUN, ADD,COPY,ENTRYPOINT,CMD,HEALTH...
 
 docker build -t <imgName:TagName> dir   (.)         ---> It will build a image based on Dockerfile instruction in current directory.
 
