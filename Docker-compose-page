@@ -1,1 +1,11 @@
 https://docs.docker.com/compose/gettingstarted/#where-to-go-next
+
+Steps to install Docker-compose using Shell script:
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+cd /usr/local/bin
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+above script should display:
+  docker-compose version 1.20.1, build 5d8c71b
