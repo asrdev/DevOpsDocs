@@ -32,6 +32,9 @@ docker build -t <imgName:TagName> dir   (.)         ---> It will build a image b
 Tag the image to align to Docker Hub repository:
 docker tag <currentRepoName> <expectedRepoName>     --> eg: docker tag nginx:1.0 manee2k6/nginx:1.0
 
+Below URL helps to configure withDockerRegistry and servers:
+https://jenkins.io/doc/pipeline/steps/docker-workflow/
+
 docker login    --> Provider username and Password
 docker push <repoNameWithTag>                       --> eg: docker push manee2k6/nginx:1.0
 
