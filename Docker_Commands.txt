@@ -14,6 +14,11 @@ docker rm <containerID> (or)  --> removing one container by ID
 docker rm $(docker ps -aq)    --> deleting all container by IDs
 docker rmi -f <imageID >      --> forced removal of one image
 docker rmi -f $(docker images -aq) --> remove all the images exist in the system.
+
+All the dangling images with no tags can be viewes through below command
+ docker images --filter "dangling=true"
+
+
 docker stop <containerID>
 docker start <containerID>
 docker kill <containerID>
@@ -43,6 +48,24 @@ docker inspect <repoName:tagName>                   --> To inspect the configura
 
 Volume mounting uisng -v:
  docker run -p 8081:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --name         jenkins -d jenkins-docker
+ 
+ Above docker run command can be executed using Docker-compose file as below:
+  1. Create a file called as "docker-compose.yml"
+  2. Copy the code below on the above file.
+     version: '2'
+     services:
+       jenkins:
+         image: jenkins-docker:latest
+         container_name: jenkins
+         user: jenkins
+        volumes:
+          - /var/jenkins_home:/var/jenkins_home
+          - /var/run/docker.sock:/var/run/docker.sock
+         environment:
+           JENKINS_HOST_HOME: "/var/jenkins_home"
+         ports:
+           - "4000:8080"
+           - "50000:50000"
 
 
 
