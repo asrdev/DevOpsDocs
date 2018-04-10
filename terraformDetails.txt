@@ -1,3 +1,11 @@
+Reference Book:
+https://terraformbook.com/TheTerraformBook_sample.pdf
+https://docs.bigchaindb.com/projects/server/en/v0.8.2/appendices/aws-setup.html
+https://linuxacademy.com/community/posts/show/topic/18181-can-somebody-explain-how-to-install-terraform
+https://www.terraform.io/docs/providers/aws/r/instance.html
+
+
+
 1.Download Terraform from the link below: https://www.terraform.io/downloads.html
 2.Open EC2 instance on the putty
 3. fire this command in putty: wget  https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip
@@ -30,8 +38,6 @@
      terraform destroy
 
 
-Reference links:
-https://docs.bigchaindb.com/projects/server/en/v0.8.2/appendices/aws-setup.html
-https://linuxacademy.com/community/posts/show/topic/18181-can-somebody-explain-how-to-install-terraform
-https://www.terraform.io/docs/providers/aws/r/instance.html
+
+
 
