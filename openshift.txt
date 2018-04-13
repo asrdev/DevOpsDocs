@@ -1,7 +1,8 @@
 Create Openshift Online account: https://manage.openshift.com/
 Download CLI from WebConsole with "?".
-Xtract the file and place it in  mv oc /usr/local/bin
-chmod + /usr/local/bin/oc
+Xtract the file : tar -xvzf oc.tar.gz
+place it in:    mv oc /usr/local/bin
+chmod +x /usr/local/bin/oc
 oc login https://api.starter-us-east-1.openshift.com --token=<hidden>
 oc new-project <project-Name>
 oc new-app <dockerhub image path> --name <appName>    ---> eg oc new-app manee2k6/python-app:1.0 --name python-app
