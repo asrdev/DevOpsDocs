@@ -1,5 +1,8 @@
 Create Openshift Online account: https://manage.openshift.com/
+
 Download CLI from WebConsole with "?".
+wget https://mirror.openshift.com/pub/openshift-v3/clients/3.9.14/linux/oc.tar.gz
+
 Xtract the file : tar -xvzf oc.tar.gz
 place it in:    mv oc /usr/local/bin
 chmod +x /usr/local/bin/oc
