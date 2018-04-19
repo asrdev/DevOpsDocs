@@ -31,7 +31,15 @@ https://www.terraform.io/docs/providers/aws/r/instance.html
         }
  }
 
-11. fire the following command where the file above ec2_instance.tf exists:
+11. Install awscli:
+      apt install python-pip
+      pip --version
+      pip install --upgrade pip
+      pip install awscli
+      aws --version
+      aws configure
+
+12. fire the following command where the file above ec2_instance.tf exists:
      terraform init
      terraform plan
      terraform apply
