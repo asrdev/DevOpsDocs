@@ -37,7 +37,7 @@ https://www.terraform.io/docs/providers/aws/r/instance.html
       pip install --upgrade pip
       pip install awscli
       aws --version
-      aws configure
+      aws configure  --> AWS ACCESS_KEY & SECRET_KEY is required to configure(Go to IAM User and download the keys)
 
 12. fire the following command where the file above ec2_instance.tf exists:
      terraform init
