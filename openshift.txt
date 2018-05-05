@@ -20,6 +20,9 @@ oc expose svc python-app --name=pyapp
 To update new version of image:
 oc import-image python-app:1.1 --from=manee2k6/python-app:1.1 
 
+To delete an app in the project use the below command
+oc delete all -l app=appName
+
 Reference Link:
 
 https://dzone.com/articles/deploying-docker-images-to-openshift
