@@ -31,7 +31,7 @@ https://www.terraform.io/docs/providers/aws/r/instance.html
  }
 
    resource "aws_instance" "manee2k6" {
-        ami = "ami-965e6bf3"
+        ami = "ami-916f59f4"
         instance_type = "t2.micro"
         key_name = "terraform"
         security_groups= ["JenkinsSG"]
