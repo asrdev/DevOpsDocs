@@ -1,6 +1,6 @@
 #Install Java
 sudo apt-get update
-sudo apt-get install default-jdk
+sudo apt-get install default-jdk -y
 echo "JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"" >> /etc/environment
 source /etc/environment
 echo $JAVA_HOME
@@ -22,7 +22,7 @@ mvn --version
 wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
 sudo apt-get update
-sudo apt-get install jenkins
+sudo apt-get install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
