@@ -9,7 +9,7 @@ echo $JAVA_HOME
 sudo apt-get update -y
 sudo apt-get upgrade -y
 cd /opt/
-wget http://www-eu.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+wget http://redrockdigimark.com/apachemirror/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
 sudo tar -xvzf apache-maven-3.5.3-bin.tar.gz
 sudo mv apache-maven-3.5.3 maven
 rm apache-maven-3.5.3-bin.tar.gz
