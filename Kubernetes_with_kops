@@ -53,7 +53,7 @@ To actually create cluster run:
    -List clusters with: kops get cluster
    -Edit this cluster with: kops edit cluster useast2.k8s.manic.com
    -Edit your node instance group: kops edit ig --name=useast2.k8s.manic.com nodes
-   -Edit your master instance group: kops edit ig --name=useast2.k8s.manic.com master-us-east-2d
+   -Edit your master instance group: kops edit ig --name=useast2.k8s.manic.com master-us-east-2c
     
 Then wait, it takes quite some time for the instances to boot and the DNS entries to be added in the zone. Once everything is up you should be able to get the kubernetes nodes:
 
