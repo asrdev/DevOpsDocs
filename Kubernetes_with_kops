@@ -21,4 +21,14 @@ Pre-requisites:
   chmod +x kops-linux-amd64
   sudo mv kops-linux-amd64 /usr/local/bin/kops
   
+Create Route53 domain for the cluster
+  -Below can be performed only after adding a user into a group under IAM with AWDAdministerAccess && AmazonRoute53FullAccess.
+  -kubernetes uses DNS for discovery inside the cluster so that you can reach out kubernetes API server from clients.
+    create a hosted zone on Route53, say, k8s.appychip.vpc. The API server endpoint will then be api.k8s.appychip.vpc
+    
+    
+    
+    
+    
+  
 
