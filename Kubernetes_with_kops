@@ -32,6 +32,10 @@ Create Route53 domain for the cluster
       - aws s3 mb s3://clusters.k8s.manic.com
       -Navigate to S3 bucket and check the creation of bucket.
       
+      Expose environment variable:
+      $ export KOPS_STATE_STORE=s3://clusters.k8s.manic.com
+      $ echo $KOPS_STATE_STORE
+      
  
    
     
