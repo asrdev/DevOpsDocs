@@ -63,9 +63,13 @@ Then wait, it takes quite some time for the instances to boot and the DNS entrie
     ip-172-20-39-78.ec2.internal  Ready  1m   v1.9
     ip-172-20-45-174.ec2.internal Ready  2m   v1.9
     
+Deploying the Dashboard UI
+The Dashboard UI is not deployed by default. To deploy it, run the following command:
+
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml   
     
-    
-   
+Then you can use the kubctl proxy to access the UI from your machine:
+$ kubectl proxy --port=8080 &   
       
  
    
