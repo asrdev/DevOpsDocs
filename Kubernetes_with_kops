@@ -46,8 +46,22 @@ Create Route53 domain for the cluster
     
     
 To actually create cluster run:
-  $ kops update cluster useast2.k8s.manic.com --yes   
+  $ kops update cluster useast2.k8s.manic.com --yes 
+  
+--->This will do all the required stuff of creating the VPC, subnets, autoscaling-groups, nodes etc. which you can observe in the output. If you want to review what all things going to happen when this command would be run then run the above command without --yes option. Without --yes option, it will print the action it is going to perform without actually doing it.
+--You can then edit the cluster settings with one of these commands: 
+   -List clusters with: kops get cluster
+   -Edit this cluster with: kops edit cluster useast2.k8s.manic.com
+   -Edit your node instance group: kops edit ig --name=useast2.k8s.manic.com nodes
+   -Edit your master instance group: kops edit ig --name=useast2.k8s.manic.com master-us-east-2d
     
+Then wait, it takes quite some time for the instances to boot and the DNS entries to be added in the zone. Once everything is up you should be able to get the kubernetes nodes:
+
+   $ kubectl get nodes
+   NAME                           STATUS AGE  VERSION
+    ip-172-20-33-144.ec2.internal Ready  4m   v1.9
+    ip-172-20-39-78.ec2.internal  Ready  1m   v1.9
+    ip-172-20-45-174.ec2.internal Ready  2m   v1.9
     
     
     
