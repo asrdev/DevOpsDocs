@@ -1,0 +1,7 @@
+Please find the below steps to setup kubernetes with kops:
+Reference URL: https://jee-appy.blogspot.com/2017/10/setup-kubernetes-cluster-kops-aws.html
+
+Pre-requisites:
+- Ubuntu machines with AWS CLI installed.
+  
+
