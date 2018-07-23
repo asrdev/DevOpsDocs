@@ -24,7 +24,18 @@ Pre-requisites:
 Create Route53 domain for the cluster
   -Below can be performed only after adding a user into a group under IAM with AWDAdministerAccess && AmazonRoute53FullAccess.
   -kubernetes uses DNS for discovery inside the cluster so that you can reach out kubernetes API server from clients.
-    create a hosted zone on Route53, say, k8s.appychip.vpc. The API server endpoint will then be api.k8s.appychip.vpc
+    create a hosted zone on Route53, say, k8s.manic.com The API server endpoint will then be api.k8s.manic.com
+    Goto Route53 hosted zone--> Create Hosted Zone--> Fill Domain Name as "k8s.manic.com" with description and Type as "Private" & VPC ID/Region as default vpcID with us-east-2
+    
+ Create S3 Bucket to store all kubernetes state transaction store, so that k8s can fetch the details and do deployment accordingly.
+   - From ubuntu machine where aws-cli installed.
+      - aws s3 mb s3://clusters.k8s.manic.com
+      -Navigate to S3 bucket and check the creation of bucket.
+      
+ 
+   
+    
+   
     
     
     
