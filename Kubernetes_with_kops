@@ -75,10 +75,39 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/
 Then you can use the kubctl proxy to access the UI from your machine:
 $ kubectl proxy --port=8080 &   
       
+Deploying Nginx Container
+To test our new Kubernetes cluster, we could deploy a simple service made up of some nginx containers:
+Create an nginx deployment:
+
+$ kubectl run sample-nginx --image=nginx --replicas=2 --port=80
+   Result: deployment.apps/sample-nginx created
+   
+$ kubectl get pods
+
+NAME                       READY     STATUS    RESTARTS   AGE
+sample-nginx-379829228-xb9y3   1/1       Running   0          10s
+sample-nginx-379829228-yhd25   1/1       Running   0          10s
+
+$ kubectl get deployments
+
+NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+sample-nginx   2         2         2            2           29s
+
+Expose the deployment as service. This will create an ELB in front of those 2 containers and allow us to publicly access them:
  
-   
-    
-   
+$ kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
+
+$ kubectl get services -o wide
+
+NAME         CLUSTER-IP      EXTERNAL-IP                                                              PORT(S)   AGE       SELECTOR
+kubernetes   100.64.0.1      <none>                                                                   443/TCP   25m       <none>
+sample-nginx     100.70.129.69   adca6650a60e611e7a66612ae64874d4-175711331.us-east-1.elb.amazonaws.com/   80/TCP    19m       run=sample-nginx
+ 
+There is an ELB running on http://adca6650a60e611e7a66612ae64874d4-175711331.us-east-1.elb.amazonaws.com with our nginx containers behind it:   
+
+You can also view the UI by accessing master node. Hit master node's IP/Domain in browser, it will ask for credentials. 
+
+Run command kubectl config view to see the credentials.
     
     
     
