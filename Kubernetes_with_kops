@@ -35,14 +35,16 @@ Create Route53 domain for the cluster
       Expose environment variable:
       $ export KOPS_STATE_STORE=s3://clusters.k8s.manic.com
       $ echo $KOPS_STATE_STORE
-      
+ 
+ Note: Below kops command may throw error if ssh public keys are not already generated. find below steps.
+   -In a command prompt, run:  ssh-keygen -t rsa -C "your_email@example.com"
+    Enter for para phrase and keep them default. You are done.
+    
  Create Kubernetes Cluster
    -Now we’re ready to create a cluster. You can reuse existing VPC (kops will create a new subnet in this VPC) by providing the vpc-id option:
    $ kops create cluster --cloud=aws --zones=us-east-2c --name=useast2.k8s.manic.com --dns-zone=manic.com --dns private
    
-   Note: Above kops command may throw error is ssh public keys are not already generated. find below steps.
-   -In a command prompt, run:  ssh-keygen -t rsa -C "your_email@example.com"
-    Enter for para phrase and keep them default. You are done.
+   
     
     
 To actually create cluster run:
