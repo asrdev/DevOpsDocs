@@ -1,0 +1,28 @@
+Pre-requisites:
+- Ubuntu machines with AWS CLI installed.
+  Follow this step to install aws-cli using python-pip:
+     apt update
+     apt ugrade
+     apt install python-pip
+     pip --version
+     pip install awscli
+     pip install --upgrade pip
+     aws --version
+     aws configure  --> AWS ACCESS_KEY & SECRET_KEY is required to configure(Go to IAM User and download the keys)
+     
+- curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  chmod +x ./kubectl
+  sudo mv ./kubectl /usr/local/bin/kubectl
+  
+- curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 
+  chmod +x minikube
+  sudo mv minikube /usr/local/bin/ 
+  
+Linux Minimum requirements:-->
+ VirtualBox or KVM
+  NOTE: Minikube also supports a --vm-driver=none option that runs the Kubernetes components on the host and not in a VM. 
+  Docker is required to use this driver but no hypervisor. If you use --vm-driver=none, be sure to specify a bridge network for docker. 
+  Otherwise it might change between network restarts, causing loss of connectivity to your cluster.  
+  
+  cmd to start minikube:
+    minikube start --vm-driver=none 
