@@ -53,7 +53,7 @@ Create Route53 domain for the cluster
      
  Create Kubernetes Cluster
    -Now we’re ready to create a cluster. You can reuse existing VPC (kops will create a new subnet in this VPC) by providing the vpc-id option:
-   $ kops create cluster --cloud=aws --zones=us-east-2c --name=useast2.manic.com --dns-zone=manic.com --dns private
+   $ kops create cluster --cloud=aws --zones=us-east-2b --name=useast2.manic.com --dns-zone=manic.com --dns private
    
    
     
