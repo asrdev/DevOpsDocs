@@ -83,9 +83,32 @@ Deploying the Dashboard UI
 The Dashboard UI is not deployed by default. To deploy it, run the following command:
 
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml   
-    
-Then you can use the kubctl proxy to access the UI from your machine:
+ 
+Accessing the Dashboard UI
+There are multiple ways you can access the Dashboard UI; either by using the kubectl command-line interface, or by accessing the Kubernetes master apiserver using your web browser.
+
+Command line proxy
+You can access Dashboard using the kubectl command-line tool by running the following command:
+
+kubectl proxy 
+Then you can use the kubctl proxy to access the UI from your machine where the command is fired or follow below:
 $ kubectl proxy --port=8080 &   
+
+Kubectl will handle authentication with apiserver and make Dashboard available at http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
+
+The UI can only be accessed from the machine where the command is executed. See kubectl proxy --help for more options.
+
+Master server:
+You may access the UI directly via the Kubernetes master apiserver. Open a browser and navigate to https://<master-ip>:<apiserver-port>/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/, where <master-ip> is IP address or domain name of the Kubernetes master.
+
+Please note, this works only if the apiserver is set up to allow authentication with username and password. This is not currently the case with some setup tools (e.g., kubeadm). Refer to the authentication admin documentation for information on how to configure authentication manually.
+
+If the username and password are configured but unknown to you, then use kubectl config view to find it.
+
+Welcome view
+When you access Dashboard on an empty cluster, you’ll see the welcome page. This page contains a link to this document as well as a button to deploy your first application. In addition, you can view which system applications are running by default in the kube-system namespace of your cluster, for example the Dashboard itself.
+
+--------------------------------------------------------------------------------------------------------
       
 Deploying Nginx Container
 To test our new Kubernetes cluster, we could deploy a simple service made up of some nginx containers:
