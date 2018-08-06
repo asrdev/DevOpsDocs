@@ -32,16 +32,16 @@ Pre-requisites:
 Create Route53 domain for the cluster
   -Below can be performed only after adding a user into a group under IAM with AWDAdministerAccess && AmazonRoute53FullAccess.
   -kubernetes uses DNS for discovery inside the cluster so that you can reach out kubernetes API server from clients.
-    create a hosted zone on Route53, say, k8s.manic.com The API server endpoint will then be api.k8s.manic.com
+    create a hosted zone on Route53, say, manic.com The API server endpoint will then be api.manic.com
     Goto Route53 hosted zone--> Create Hosted Zone--> Fill Domain Name as "k8s.manic.com" with description and Type as "Private" & VPC ID/Region as default vpcID with us-east-2
     
  Create S3 Bucket to store all kubernetes state transaction store, so that k8s can fetch the details and do deployment accordingly.
    - From ubuntu machine where aws-cli installed.
-      - aws s3 mb s3://clusters.k8s.manic.com
+      - aws s3 mb s3://clusters.manic.com
       -Navigate to S3 bucket and check the creation of bucket.
       
       Expose environment variable:
-      $ export KOPS_STATE_STORE=s3://clusters.k8s.manic.com
+      $ export KOPS_STATE_STORE=s3://clusters.manic.com
       $ echo $KOPS_STATE_STORE
  
  Note: Below kops command may throw error if ssh public keys are not already generated. find below steps.
@@ -52,7 +52,7 @@ Create Route53 domain for the cluster
     
  Create Kubernetes Cluster
    -Now we’re ready to create a cluster. You can reuse existing VPC (kops will create a new subnet in this VPC) by providing the vpc-id option:
-   $ kops create cluster --cloud=aws --zones=us-east-2c --name=useast2.k8s.manic.com --dns-zone=manic.com --dns private
+   $ kops create cluster --cloud=aws --zones=us-east-2c --name=useast2.manic.com --dns-zone=manic.com --dns private
    
    
     
