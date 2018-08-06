@@ -11,6 +11,14 @@ Pre-requisites:
      pip install awscli
      pip install --upgrade pip
      aws --version
+     
+     Note: Create a group called kubernetes and add a user which has following access.
+           AmazonEC2FullAccess
+           AmazonRoute53FullAccess
+           AmazonS3FullAccess
+           IAMFullAccess
+           AmazonVPCFullAccess
+           
      aws configure  --> AWS ACCESS_KEY & SECRET_KEY is required to configure(Go to IAM User and download the keys)
      
 - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
