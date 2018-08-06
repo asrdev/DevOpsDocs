@@ -48,8 +48,9 @@ Create Route53 domain for the cluster
    -In a command prompt, run:  ssh-keygen -t rsa -C "your_email@example.com"
     Enter for para phrase and keep them default. You are done.
     
-   - In a command prompt, run:  kops create secret --name useast2.manee.vpc sshpublickey admin -i ~/.ssh/id_rsa.pub
-    
+   - In a command prompt, run:  kops create secret --name k8s-clusters.manic.com --state s3://clusters.manic.com sshpublickey admin -i ~/.ssh/id_rsa.pub
+     Note: If the above command throw error, pls check the cluster name and proceed with further command below.
+     
  Create Kubernetes Cluster
    -Now we’re ready to create a cluster. You can reuse existing VPC (kops will create a new subnet in this VPC) by providing the vpc-id option:
    $ kops create cluster --cloud=aws --zones=us-east-2c --name=useast2.manic.com --dns-zone=manic.com --dns private
