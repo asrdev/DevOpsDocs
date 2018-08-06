@@ -59,7 +59,7 @@ Create Route53 domain for the cluster
     
     
 To actually create cluster run:
-  $ kops update cluster useast2.k8s.manic.com --yes 
+  $ kops update cluster useast2.manic.com --yes 
   
 --->This will do all the required stuff of creating the VPC, subnets, autoscaling-groups, nodes etc. which you can observe in the output. If you want to review what all things going to happen when this command would be run then run the above command without --yes option. Without --yes option, it will print the action it is going to perform without actually doing it.
 --You can then edit the cluster settings with one of these commands: 
