@@ -113,6 +113,31 @@ If the username and password are configured but unknown to you, then use
 Welcome view
 When you access Dashboard on an empty cluster, you’ll see the welcome page. This page contains a link to this document as well as a button to deploy your first application. In addition, you can view which system applications are running by default in the kube-system namespace of your cluster, for example the Dashboard itself.
 
+How to create service accounts:
+
+ $ kubectl create serviceaccount <admin>  ---> in the place of admin you can create developer, deployer,security accounts.
+ 
+ $ kubectl get serviceaccounts admin -o yaml
+
+Output of above command:
+
+  apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    creationTimestamp: 2018-08-07T09:38:29Z
+    name: admin
+    namespace: default
+    resourceVersion: "97414"
+    selfLink: /api/v1/namespaces/default/serviceaccounts/admin
+    uid: a46a2404-9a25-11e8-b450-06a11a657d12
+ secrets:
+ - name: admin-token-95zbk
+ 
+Copy the name of the secret and fire command as below and get the token for the same. 
+$ kubectl get secret admin-token-95zbk -o yaml 
+
+
+ 
 --------------------------------------------------------------------------------------------------------
       
 Deploying Nginx Container
