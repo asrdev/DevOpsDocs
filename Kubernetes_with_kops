@@ -67,9 +67,9 @@ To actually create cluster run:
 --->This will do all the required stuff of creating the VPC, subnets, autoscaling-groups, nodes etc. which you can observe in the output. If you want to review what all things going to happen when this command would be run then run the above command without --yes option. Without --yes option, it will print the action it is going to perform without actually doing it.
 --You can then edit the cluster settings with one of these commands: 
    -List clusters with: kops get cluster
-   -Edit this cluster with: kops edit cluster useast2.k8s.manic.com
-   -Edit your node instance group: kops edit ig --name=useast2.k8s.manic.com nodes
-   -Edit your master instance group: kops edit ig --name=useast2.k8s.manic.com master-us-east-2c
+   -Edit this cluster with: kops edit cluster useast2.manic.com
+   -Edit your node instance group: kops edit ig --name=useast2.manic.com nodes
+   -Edit your master instance group: kops edit ig --name=useast2.manic.com master-us-east-2c
     
 Then wait, it takes quite some time for the instances to boot and the DNS entries to be added in the zone. Once everything is up you should be able to get the kubernetes nodes:
 
