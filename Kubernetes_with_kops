@@ -99,11 +99,16 @@ Kubectl will handle authentication with apiserver and make Dashboard available a
 The UI can only be accessed from the machine where the command is executed. See kubectl proxy --help for more options.
 
 Master server:
-You may access the UI directly via the Kubernetes master apiserver. Open a browser and navigate to https://<master-ip>:<apiserver-port>/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/, where <master-ip> is IP address or domain name of the Kubernetes master.
+You may access the UI directly via the Kubernetes master apiserver. Open a browser and navigate to 
+https://EC2 machine IP/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/, where <master-ip> is IP address or domain name of the Kubernetes master.
 
 Please note, this works only if the apiserver is set up to allow authentication with username and password. This is not currently the case with some setup tools (e.g., kubeadm). Refer to the authentication admin documentation for information on how to configure authentication manually.
 
-If the username and password are configured but unknown to you, then use kubectl config view to find it.
+If the username and password are configured but unknown to you, then use 
+  kubectl config view  (to find it.)
+ 
+ User will be taken to configview window to login either with token or config---> Select token and copy the token from config view of above command.
+ 
 
 Welcome view
 When you access Dashboard on an empty cluster, you’ll see the welcome page. This page contains a link to this document as well as a button to deploy your first application. In addition, you can view which system applications are running by default in the kube-system namespace of your cluster, for example the Dashboard itself.
