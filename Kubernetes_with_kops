@@ -198,6 +198,25 @@ NodeRestriction,Priority
 Label the default namespace with istio-injection=enabled:
    kubectl label namespace default istio-injection=enabled
    kubectl get namespace -L istio-injection
+ 
+ 
+$ kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
+
+Option 1: Install with Helm via helm template
+Render Istio’s core components to a Kubernetes manifest called istio.yaml:
+  $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system > $HOME/istio.yaml
+
+Install the components via the manifest:
+  $ kubectl create namespace istio-system
+  $ kubectl create -f $HOME/istio.yaml
+
+Install Helm to setup istio and verifaction:
+https://docs.helm.sh/using_helm/#installing-helm
+$ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+
+
 --------------------------------------------------------------------------------------------------------
       
 Deploying Nginx Container
