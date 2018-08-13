@@ -135,6 +135,19 @@ Output of above command:
  
 Copy the name of the secret and fire command as below and get the token for the same. 
 $ kubectl get secret admin-token-95zbk -o yaml 
+--------------------------------------------------------------------------------------------------------
+ISTIO-1.0 setup within kubernetes cluster:
+
+
+Download ref link: https://istio.io/docs/setup/kubernetes/download-release/
+  curl -L https://git.io/getLatestIstio | sh -
+
+setup istioctl--> cd istio-1.0.0/bin
+               chmod +x istioctl
+               mv ./istio-1.0.0 /usr/local/bin/
+               istioctl version
+
+
 
 
  
