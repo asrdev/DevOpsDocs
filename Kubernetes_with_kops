@@ -198,23 +198,39 @@ NodeRestriction,Priority
 Label the default namespace with istio-injection=enabled:
    kubectl label namespace default istio-injection=enabled
    kubectl get namespace -L istio-injection
+
+ $ kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml 
  
- 
-$ kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
-
-Option 1: Install with Helm via helm template
-Render Istio’s core components to a Kubernetes manifest called istio.yaml:
-  $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system > $HOME/istio.yaml
-
-Install the components via the manifest:
-  $ kubectl create namespace istio-system
-  $ kubectl create -f $HOME/istio.yaml
-
 Install Helm to setup istio and verifaction:
 https://docs.helm.sh/using_helm/#installing-helm
 $ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
+
+Automatic sidecar injection
+$ kubectl api-versions | grep admissionregistration
+  admissionregistration.k8s.io/v1beta1
+  
+Enable webhook for sidecarinjection:
+helm template --namespace=istio-system --set sidecarInjectorWebhook.enabled=true install/kubernetes/helm/istio > istio.yaml
+$ kubectl create ns istio-system
+$ kubectl apply -n istio-system -f istio.yaml
+
+Deploying an app
+Deploy sleep app. Verify both deployment and pod have a single container.
+
+$ kubectl apply -f samples/sleep/sleep.yaml
+$ kubectl get deployment -o wide
+NAME      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE       CONTAINERS   IMAGES       SELECTOR
+sleep     1         1         1            1           12m       sleep        tutum/curl   app=sleep
+
+Label the default namespace with istio-injection=enabled
+
+$ kubectl get pod
+NAME                     READY     STATUS        RESTARTS   AGE
+sleep-776b7bcdcd-bhn9m   2/2       Terminating   0          2m
+
+
 
 
 --------------------------------------------------------------------------------------------------------
