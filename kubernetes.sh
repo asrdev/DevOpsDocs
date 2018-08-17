@@ -27,6 +27,7 @@ echo $KOPS_STATE_STORE
 ssh-keygen -t rsa -C "manee2k6@gmail.com"
 
 ################   Kubernetes cluster creation using KOPS    ######################################################
+aws route53 create-hosted-zone --name clusters.manic.com --caller-reference 1
 kops create cluster \
 --cloud=aws \
 --master-count=1 \
@@ -35,4 +36,7 @@ kops create cluster \
 --node-size=t2.medium \
 --zones=us-east-2a \
 --name=${KOPS_CLUSTER_NAME}
+kops update cluster
+kops update cluster --yes
+
 
