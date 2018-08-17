@@ -28,7 +28,7 @@ ssh-keygen -t rsa -C "manee2k6@gmail.com"
 
 ################   Kubernetes cluster creation using KOPS    ######################################################
 kops create cluster \
---cloud=kubernetes \
+--cloud=aws \
 --master-count=1 \
 --master-size=t2.medium \
 --node-count=2 \
