@@ -48,7 +48,7 @@ Create Route53 domain for the cluster
    -In a command prompt, run:  ssh-keygen -t rsa -C "your_email@example.com"
     Enter for para phrase and keep them default. You are done.
     
-   - In a command prompt, run:  kops create secret --name k8s-clusters.manic.com --state s3://clusters.manic.com sshpublickey admin -i ~/.ssh/id_rsa.pub
+   - In a command prompt, run:  kops create secret --name clusters.manic.com --state s3://clusters.manic.com sshpublickey admin -i ~/.ssh/id_rsa.pub
      Note: If the above command throw error, pls check the cluster name and proceed with further command below.
      
  Create Kubernetes Cluster
