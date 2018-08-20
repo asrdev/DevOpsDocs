@@ -43,5 +43,19 @@ kops create cluster \
 kops update cluster
 kops update cluster --yes
 kops validate cluster
+kubectl get nodes
+kubectl get namespace
+
+#Post validation of cluster check cluster info:
+kubectl cluster-info
+
+#Deploying the Dashboard UI
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+#You may access the UI directly via the Kubernetes master apiserver. Above kubectl cluster-info commands display kubernetes master url as below.
+#Add ui at the end of this url: https://api-manic-k8s-local-cn06k4-1019785470.us-east-2.elb.amazonaws.com/ui
+
+
+
 
 
