@@ -108,7 +108,16 @@ If the username and password are configured but unknown to you, then use
   kubectl config view  (to find it.)
  
  User will be taken to configview window to login either with token or config---> Select token and copy the token from config view of above command.
- 
+
+#Post validation of cluster check cluster info:
+kubectl cluster-info
+
+#You may access the UI directly via the Kubernetes master apiserver. Above kubectl cluster-info commands display kubernetes master url as below.
+#Add ui at the end of this url: https://api-manic-k8s-local-cn06k4-1019785470.us-east-2.elb.amazonaws.com/ui
+# To login use the command: username:admin and fire this command for token-->  
+  $ kops get secrets kube --type secret -oplaintext 
+#Page redirects to kubernetes asking for token---> fire this command for token--> 
+  $ kops get secrets admin --type secret -oplaintext 
 
 Welcome view
 When you access Dashboard on an empty cluster, you’ll see the welcome page. This page contains a link to this document as well as a button to deploy your first application. In addition, you can view which system applications are running by default in the kube-system namespace of your cluster, for example the Dashboard itself.
