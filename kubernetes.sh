@@ -38,5 +38,6 @@ kops create cluster \
 --name=${KOPS_CLUSTER_NAME}
 kops update cluster
 kops update cluster --yes
+kops validate cluster
 
 
