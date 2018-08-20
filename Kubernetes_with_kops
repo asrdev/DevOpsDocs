@@ -163,7 +163,7 @@ Open the configuration file:
 
 Command to check cluster: echo ${KOPS_CLUSTER_NAME}
 
-$ kops edit cluster $YOURCLUSTER
+$ kops edit cluster ${KOPS_CLUSTER_NAME}
 
 Add the following in the configuration file:
 
@@ -266,21 +266,18 @@ servicegraph               ClusterIP      100.70.47.155    <none>             80
 tracing                    ClusterIP      100.66.240.236   <none>             80/TCP                                                                                                      9m
 zipkin                     ClusterIP      100.67.25.82     <none>             9411/TCP                                                                                                    9m
 
+
 Deploy Bookinfo application: https://istio.io/docs/examples/bookinfo/#if-you-are-running-on-kubernetes
 
 If you are running on Kubernetes:
 -Change directory to the root of the Istio installation directory.
 
 -Bring up the application containers:
-
 -If you are using manual sidecar injection, use the following command
-
   $ kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
 
 The istioctl kube-inject command is used to manually modify the bookinfo.yaml file before creating the deployments as documented here.
-
 -If you are using a cluster with automatic sidecar injection enabled, label the default namespace with istio-injection=enabled
-
   $ kubectl label namespace default istio-injection=enabled
 
 -Then simply deploy the services using kubectl
