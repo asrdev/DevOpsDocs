@@ -144,12 +144,15 @@ Download ref link: https://istio.io/docs/setup/kubernetes/download-release/
 
 setup istioctl--> cd istio-1.0.0/bin
                chmod +x istioctl
+               back to home folder(exit istio-1.0.0 folder)
                mv ./istio-1.0.0 /usr/local/bin/
                istioctl version
 
 Below steps are to configure istio on kubernetes for AWS using kops:
 
 Open the configuration file:
+
+Command to check cluster: echo ${KOPS_CLUSTER_NAME}
 
 $ kops edit cluster $YOURCLUSTER
 
@@ -201,20 +204,58 @@ Label the default namespace with istio-injection=enabled:
 
  $ kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml 
  
-Install Helm to setup istio and verifaction:
-https://docs.helm.sh/using_helm/#installing-helm
-$ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
 
 Automatic sidecar injection
 $ kubectl api-versions | grep admissionregistration
   admissionregistration.k8s.io/v1beta1
   
-Enable webhook for sidecarinjection:
-helm template --namespace=istio-system --set sidecarInjectorWebhook.enabled=true install/kubernetes/helm/istio > istio.yaml
 $ kubectl create ns istio-system
 $ kubectl apply -n istio-system -f istio.yaml
+
+Navigate to Istio folder --> cd /usr/local/bin/istio-1.0.0
+
+To install Istio without mutual TLS authentication between sidecars:( Below command creates/configure all resources as required).
+
+$ kubectl apply -f install/kubernetes/istio-demo.yaml
+  kubectl get pods -n istio-system
+  
+ NAME                                        READY     STATUS      RESTARTS   AGE
+grafana-6995b4fbd7-vq8x4                    1/1       Running     0          8m
+istio-citadel-54f4678f86-jzhfb              1/1       Running     0          8m
+istio-cleanup-secrets-l6z8w                 0/1       Completed   0          8m
+istio-egressgateway-5d7f8fcc7b-hs4bn        1/1       Running     0          8m
+istio-galley-7bd8b5f88f-9pmbh               1/1       Running     0          8m
+istio-grafana-post-install-ftn5b            0/1       Completed   0          8m
+istio-ingressgateway-6f58fdc8d7-fw5xh       1/1       Running     0          8m
+istio-pilot-d99689994-6dqm6                 2/2       Running     0          8m
+istio-policy-766bf4bd6d-vlqq6               2/2       Running     0          8m
+istio-sidecar-injector-85ccf84984-b4h22     1/1       Running     0          8m
+istio-statsd-prom-bridge-55965ff9c8-kzvwz   1/1       Running     0          8m
+istio-telemetry-55b6b5bbc7-nf2h9            2/2       Running     0          8m
+istio-tracing-77f9f94b98-5dj4x              1/1       Running     0          8m
+prometheus-7456f56c96-5dgqw                 1/1       Running     0          8m
+servicegraph-684c85ffb9-v4t4v               1/1       Running     0          8m
+
+$ kubectl get svc -n istio-system
+
+NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP        PORT(S)                                                                                                     AGE
+grafana                    ClusterIP      100.65.172.77    <none>             3000/TCP                                                                                                    9m
+istio-citadel              ClusterIP      100.71.183.104   <none>             8060/TCP,9093/TCP                                                                                           9m
+istio-egressgateway        ClusterIP      100.68.244.196   <none>             80/TCP,443/TCP                                                                                              9m
+istio-galley               ClusterIP      100.67.180.247   <none>             443/TCP,9093/TCP                                                                                            9m
+istio-ingressgateway       LoadBalancer   100.70.234.163   ae01edadda483...   80:31380/TCP,443:31390/TCP,31400:31400/TCP,15011:32120/TCP,8060:31890/TCP,15030:31395/TCP,15031:30932/TCP   9m
+istio-pilot                ClusterIP      100.69.13.117    <none>             15010/TCP,15011/TCP,8080/TCP,9093/TCP                                                                       9m
+istio-policy               ClusterIP      100.68.214.4     <none>             9091/TCP,15004/TCP,9093/TCP                                                                                 9m
+istio-sidecar-injector     ClusterIP      100.70.80.71     <none>             443/TCP                                                                                                     9m
+istio-statsd-prom-bridge   ClusterIP      100.68.155.91    <none>             9102/TCP,9125/UDP                                                                                           9m
+istio-telemetry            ClusterIP      100.71.25.146    <none>             9091/TCP,15004/TCP,9093/TCP,42422/TCP                                                                       9m
+jaeger-agent               ClusterIP      None             <none>             5775/UDP,6831/UDP,6832/UDP                                                                                  9m
+jaeger-collector           ClusterIP      100.64.249.39    <none>             14267/TCP,14268/TCP                                                                                         9m
+jaeger-query               ClusterIP      100.68.203.254   <none>             16686/TCP                                                                                                   9m
+prometheus                 ClusterIP      100.66.144.151   <none>             9090/TCP                                                                                                    9m
+servicegraph               ClusterIP      100.70.47.155    <none>             8088/TCP                                                                                                    9m
+tracing                    ClusterIP      100.66.240.236   <none>             80/TCP                                                                                                      9m
+zipkin                     ClusterIP      100.67.25.82     <none>             9411/TCP                                                                                                    9m
 
 Deploy Bookinfo application: https://istio.io/docs/examples/bookinfo/#if-you-are-running-on-kubernetes
 
