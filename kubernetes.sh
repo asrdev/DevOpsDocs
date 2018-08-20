@@ -19,15 +19,16 @@ sudo mv kops-linux-amd64 /usr/local/bin/kops
 kops version
 #################   Create S3 Bucket      #########################################################
 aws s3 mb s3://clusters.manic.com
+aws s3api put-bucket-versioning --bucket clusters.manic.com --versioning-configuration Status=Enabled
 #Expose environment variable:
-export KOPS_CLUSTER_NAME=clusters.manic.com
+export KOPS_CLUSTER_NAME=manic.k8s.local
 echo $KOPS_CLUSTER_NAME
 export KOPS_STATE_STORE=s3://clusters.manic.com
 echo $KOPS_STATE_STORE
 ssh-keygen -t rsa -C "manee2k6@gmail.com"
 
 ################   Kubernetes cluster creation using KOPS    ######################################################
-aws route53 create-hosted-zone --name clusters.manic.com --caller-reference 1
+#aws route53 create-hosted-zone --name clusters.manic.com --caller-reference 1
 kops create cluster \
 --cloud=aws \
 --master-count=1 \
