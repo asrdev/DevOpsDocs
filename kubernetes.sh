@@ -54,6 +54,8 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/
 
 #You may access the UI directly via the Kubernetes master apiserver. Above kubectl cluster-info commands display kubernetes master url as below.
 #Add ui at the end of this url: https://api-manic-k8s-local-cn06k4-1019785470.us-east-2.elb.amazonaws.com/ui
+# To login use the command: username:admin and fire this command for token-->  kops get secrets kube --type secret -oplaintext 
+#Page redirects to kubernetes asking for token---> fire this command for token--> kops get secrets admin --type secret -oplaintext
 
 
 
