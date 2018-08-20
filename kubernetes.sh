@@ -8,7 +8,7 @@ pip install --upgrade pip
 aws --version
 #Note: aws configure need to be completed to perform s3, route53 or any addition on aws. Moreover this account should require to 
 
-Follow this tutorial:
+Follow this tutorial: (Route53 can be created as public instead of private-JFYI)
 https://ramhiser.com/post/2018-05-20-setting-up-a-kubernetes-cluster-on-aws-in-5-minutes/
 #################    Install Kubectl client: #########################################################
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
